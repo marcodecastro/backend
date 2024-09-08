@@ -23,7 +23,14 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN || 'https://frontend-epj9.onrender.com', // URL do frontend 
+    optionsSuccessStatus: 200,
+  };
+  
+  app.use(cors(corsOptions));
+
+//app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
